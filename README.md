@@ -16,7 +16,22 @@ chmod 600 env.sh
 Then run a docker daemon that will terminate with
 a shell connected to the VPN
 ```
-docker run -v $PWD/juniper_connect.sh:/s/juniper_connect.sh -v $PWD/env.sh:/s/env.sh -v /:/thishost --privileged -ti makinacorpus/openconnect /s/juniper_connect.sh
+docker run \
+    -v $(pwd)/env.sh:/s/env.sh \
+    -v /:/thishost \
+    --privileged -ti --rm\
+    makinacorpus/openconnect /s/juniper_connect.sh
 ```
 
 The / of your current box is mounted inside ``/thishost`` in the container
+
+debug:
+```
+docker run \
+    -v $(pwd)/juniper_connect.sh:/s/juniper_connect.sh \
+    -v $(pwd)/env.sh:/s/env.sh \
+    -v /:/thishost \
+    --privileged -ti --rm\
+    makinacorpus/openconnect /s/juniper_connect.sh
+```
+
