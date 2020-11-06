@@ -35,6 +35,6 @@ if [[ -n ${RELEASE-} ]];then
     || die_in_error "vpnscripts: $scripts_cid does not exits"
 fi
 # wrapper to suash image up
-corpusops.bootstrap/hacking/docker_build makinacorpus/openconnect
+docker build --squash -t makinacorpus/openconnect .
 exit $?
 # vim:set et sts=4 ts=4 tw=80:

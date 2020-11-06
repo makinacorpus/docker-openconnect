@@ -35,3 +35,22 @@ docker run \
     makinacorpus/openconnect /s/juniper_connect.sh
 ```
 
+
+## with openfortivpn
+```
+docker run \
+    -v $(pwd)/env.sh:/s/env.sh \
+    -v /:/thishost \
+    --privileged -ti --rm\
+    makinacorpus/openconnect /s/openfortivpn_connect.sh
+```
+ 
+```
+docker run \
+    -v $(pwd)/openfortivpn_connect.sh:/s/openfortivpn_connect.sh \
+    -v $(pwd)/env.sh:/s/env.sh \
+    -v /:/thishost \
+    --privileged -ti --rm\
+    makinacorpus/openconnect /s/openfortivpn_connect.sh
+```
+ 
